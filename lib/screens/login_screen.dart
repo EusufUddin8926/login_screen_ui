@@ -12,6 +12,7 @@ class _Lofin_ScreenState extends State<Login_Screen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -44,23 +45,31 @@ class _Lofin_ScreenState extends State<Login_Screen> {
                 width: double.infinity,
                 height: 600,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
-                ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20))),
                 child: Column(
                   children: [
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          prefix: Icon(Icons.email, color: Colors.blue),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: Colors.blue)
-                          )
-
-                        ),
+                          fillColor: Colors.blue.withOpacity(.02),
+                            filled: true,
+                            labelText: "Email",
+                            labelStyle: TextStyle(color: Colors.blue),
+                            hintText: "Enter your Email",
+                            prefixIcon: Icon(Icons.email),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(color: Colors.blue)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(color: Colors.blue))),
                       ),
                     )
                   ],

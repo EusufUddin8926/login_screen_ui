@@ -24,7 +24,7 @@ class _Lofin_ScreenState extends State<Login_Screen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
                 child: CircleAvatar(
                   radius: 22,
                   child: Icon(Icons.arrow_back_ios_new, color: Colors.black87),
@@ -49,16 +49,16 @@ class _Lofin_ScreenState extends State<Login_Screen> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20))),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: TextFormField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
                         decoration: InputDecoration(
-                          fillColor: Colors.blue.withOpacity(.02),
+                            fillColor: Colors.blue.withOpacity(.02),
                             filled: true,
                             labelText: "Email",
                             labelStyle: TextStyle(color: Colors.blue),
@@ -71,8 +71,62 @@ class _Lofin_ScreenState extends State<Login_Screen> {
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide: BorderSide(color: Colors.blue))),
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        height: 16,
+                      ),
+                      TextFormField(
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            fillColor: Colors.blue.withOpacity(.02),
+                            filled: true,
+                            labelText: "Password",
+                            labelStyle: TextStyle(color: Colors.blue),
+                            hintText: "Enter your Password",
+                            prefixIcon: Icon(Icons.lock),
+                            suffixIcon: Icon(Icons.remove_red_eye),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(color: Colors.blue)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(color: Colors.blue))),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "Forgot Password",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12),
+                        ),
+                      ),
+                      Spacer(),
+                      MaterialButton(
+                        onPressed: () {},
+                        child: Text("Sign In",
+                            style: TextStyle(color: Colors.white)),
+                        color: Colors.blue,
+                        minWidth: double.infinity,
+                        height: 50,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16)),
+                      ),
+                      SizedBox(height: 10,),
+                      Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(text: 'Do you have account ', style: TextStyle(color: Colors.black87)),
+                            TextSpan(
+                              text: '?',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            TextSpan(text: ' Sign Up!', style: TextStyle(color: Colors.red)),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],

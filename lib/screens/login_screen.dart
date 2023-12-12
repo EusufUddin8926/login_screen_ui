@@ -8,6 +8,9 @@ class Login_Screen extends StatefulWidget {
 }
 
 class _Lofin_ScreenState extends State<Login_Screen> {
+  bool  isPassVisiable = false;
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,7 +27,7 @@ class _Lofin_ScreenState extends State<Login_Screen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: CircleAvatar(
                   radius: 22,
                   child: Icon(Icons.arrow_back_ios_new, color: Colors.black87),
@@ -44,89 +47,90 @@ class _Lofin_ScreenState extends State<Login_Screen> {
               Container(
                 width: double.infinity,
                 height: 600,
+                padding: EdgeInsets.only(bottom: 30, top: 30,left: 16,right: 16),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20))),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                          fillColor: Colors.blue.withOpacity(.02),
+                          filled: true,
+                          labelText: "Email",
+                          labelStyle: TextStyle(color: Colors.blue),
+                          hintText: "Enter your Email",
+                          prefixIcon: Icon(Icons.email),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.blue)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.blue))),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.number,
+                      obscureText: isPassVisiable,
+                      decoration: InputDecoration(
+                          fillColor: Colors.blue.withOpacity(.02),
+                          filled: true,
+                          labelText: "Password",
+                          labelStyle: TextStyle(color: Colors.blue),
+                          hintText: "Enter your Password",
+                          prefixIcon: Icon(Icons.lock),
+                          suffixIcon: IconButton(icon: Icon(Icons.remove_red_eye), onPressed: (){
+                            setState(() {
+                              isPassVisiable = !isPassVisiable;
+                            });
+                          }),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.blue)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.blue))),
+                    ),
+                    SizedBox(height: 6,),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        "Forgot Password",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12),
                       ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            fillColor: Colors.blue.withOpacity(.02),
-                            filled: true,
-                            labelText: "Email",
-                            labelStyle: TextStyle(color: Colors.blue),
-                            hintText: "Enter your Email",
-                            prefixIcon: Icon(Icons.email),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: Colors.blue)),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: Colors.blue))),
+                    ),
+                    Spacer(),
+                    MaterialButton(
+                      onPressed: () {},
+                      child: Text("Sign In",
+                          style: TextStyle(color: Colors.white)),
+                      color: Colors.blue,
+                      minWidth: double.infinity,
+                      height: 50,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)),
+                    ),
+                    SizedBox(height: 10,),
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: 'Do you have account ', style: TextStyle(color: Colors.black87)),
+                          TextSpan(
+                            text: '?',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: ' Sign Up!', style: TextStyle(color: Colors.red)),
+                        ],
                       ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                            fillColor: Colors.blue.withOpacity(.02),
-                            filled: true,
-                            labelText: "Password",
-                            labelStyle: TextStyle(color: Colors.blue),
-                            hintText: "Enter your Password",
-                            prefixIcon: Icon(Icons.lock),
-                            suffixIcon: Icon(Icons.remove_red_eye),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: Colors.blue)),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: Colors.blue))),
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          "Forgot Password",
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 12),
-                        ),
-                      ),
-                      Spacer(),
-                      MaterialButton(
-                        onPressed: () {},
-                        child: Text("Sign In",
-                            style: TextStyle(color: Colors.white)),
-                        color: Colors.blue,
-                        minWidth: double.infinity,
-                        height: 50,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16)),
-                      ),
-                      SizedBox(height: 10,),
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(text: 'Do you have account ', style: TextStyle(color: Colors.black87)),
-                            TextSpan(
-                              text: '?',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(text: ' Sign Up!', style: TextStyle(color: Colors.red)),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
               )
             ],
